@@ -1,6 +1,8 @@
 import axios from "axios";
 
 export const fetchUser = async (id: any) => {
+  console.log("🟢 Fetching user from API with id:", id);
+
   const { data } = await axios.get(
     `https://jsonplaceholder.typicode.com/users/${id}`
   );

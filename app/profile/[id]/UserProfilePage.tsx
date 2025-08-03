@@ -18,8 +18,12 @@ const UserProfilePage = () => {
     isError,
     error,
   } = useQuery<any, Error>({
-    queryKey: ["user"],
+    queryKey: ["user", params.id],
     queryFn: () => fetchUser(params.id),
+    staleTime: 5 * 60 * 1000,
+    // gcTime: 5 * 60 * 1000,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
   });
 
   const mutation = useMutation({
@@ -27,11 +31,11 @@ const UserProfilePage = () => {
       updateUser(params.id, { name: name });
     },
     onMutate: async (newName: any) => {
-      await queryClient.cancelQueries({ queryKey: ["user"] });
+      await queryClient.cancelQueries({ queryKey: ["user", params.id] });
 
-      const prevUser = queryClient.getQueryData(["user"]);
+      const prevUser = queryClient.getQueryData(["user", params.id]);
 
-      queryClient.setQueryData(["user"], (old: any) => ({
+      queryClient.setQueryData(["user", params.id], (old: any) => ({
         ...old,
         name: newName.name,
       }));
