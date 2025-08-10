@@ -20,10 +20,8 @@ const UserProfilePage = () => {
   } = useQuery<any, Error>({
     queryKey: ["user", params.id],
     queryFn: () => fetchUser(params.id),
-    staleTime: 5 * 60 * 1000,
-    // gcTime: 5 * 60 * 1000,
-    refetchOnWindowFocus: false,
-    refetchOnReconnect: false,
+    // staleTime: 1 * 60 * 1000,
+    // gcTime: 1 * 60 * 1000,
   });
 
   const mutation = useMutation({
@@ -63,6 +61,7 @@ const UserProfilePage = () => {
       <div>
         <label className="font-medium block mb-1">Name:</label>
         <input
+          placeholder="Enter name"
           className="border p-2 w-full rounded"
           value={name}
           onChange={(e) => setName(e.target.value)}
