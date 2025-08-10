@@ -35,7 +35,7 @@ test("Render a Users", () => {
       ]}
     />
   );
-  fireEvent.click(screen.getByText("Hoàng"));
+  fireEvent.click(screen.getByText("Hoàn"));
   const heading = screen.getByText(/^Selected:/);
   expect(heading).toBeInTheDocument();
 });
