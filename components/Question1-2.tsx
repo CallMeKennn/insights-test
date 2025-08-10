@@ -28,7 +28,7 @@ function UserList({ users }: UserListProps) {
 
       {selectedUser && (
         <div>
-          <h3>Selected: {selectedUser.name}</h3>
+          <h3>Selected:: {selectedUser.name}</h3>
         </div>
       )}
     </div>

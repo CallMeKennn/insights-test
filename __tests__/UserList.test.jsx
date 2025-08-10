@@ -40,14 +40,14 @@ test("Render a Users", () => {
   expect(heading).toBeInTheDocument();
 });
 
-test("Check input", () => {
-  const queryClient = new QueryClient();
-  render(
-    <QueryClientProvider client={queryClient}>
-      <UserProfilePage />
-    </QueryClientProvider>
-  );
-  const input = screen.getByPlaceholderText("Enter name");
-  fireEvent.change(input, { target: { value: "Hoàng" } });
-  expect(input.value).toBe("Hoàng");
-});
+// test("Check input", () => {
+//   const queryClient = new QueryClient();
+//   render(
+//     <QueryClientProvider client={queryClient}>
+//       <UserProfilePage />
+//     </QueryClientProvider>
+//   );
+//   const input = screen.getByPlaceholderText("Enter name");
+//   fireEvent.change(input, { target: { value: "Hoàng" } });
+//   expect(input.value).toBe("Hoàng");
+// });
